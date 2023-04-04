@@ -1,20 +1,21 @@
 import { Link } from "react-router-dom";
 import style from "./Navbar.module.css";
+import logo from "../assets/logo2-r.png";
 
 function Navbar() {
   return (
     <>
       <div className={style.navbar}>
         <Link to="/">
-          <h1>LOGO</h1>
+          <img src={logo} alt="logo" />
         </Link>
-        <div>
+
+        <div className={style.link}>
           <Link
             to="/"
             style={{
               textDecoration: "none",
-              color: "#3A1212",
-              borderBottom: "3px solid #FF2625",
+              color: "white",
             }}
           >
             {" "}
@@ -22,7 +23,7 @@ function Navbar() {
           </Link>
           <a
             href="#exercises"
-            style={{ textDecoration: "none", color: "#3A1212" }}
+            style={{ textDecoration: "none", color: "white" }}
           >
             Exercises
           </a>

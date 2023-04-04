@@ -1,80 +1,55 @@
-import { Button } from "@mui/material";
 import style from "./HeroBanner.module.css";
-import HeroImg from "../assets/HeroImg.jpg";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import HeroImg from "../assets/hero2.jpg";
 
 function HeroBanner() {
-  const [exercises, setExercises] = useState([]);
-  const [exFilter, setExFilter] = useState("");
-  const [filtro, setFiltro] = useState([]);
-  const [teste, setTeste] = useState();
-
-  let filtered;
-
-  useEffect(() => {
-    async function Fetch() {
-      try {
-        const response = await axios.get(
-          "http://localhost:1337/api/exercises/4"
-        );
-        setExercises(response.data.data.attributes.data);
-      } catch (err) {
-        console.log(err);
-      } finally {
-        console.log("acabou fetch");
-      }
-    }
-    Fetch();
-  }, []);
-
   return (
     <div className={style.heroWrapper}>
       <div className={style.title}>
-        <h1>Fitness App</h1>
-        <h3>
-          Eat, Train, Sleep <br />
-          and REPEAT
-        </h3>
-        <h4>Confira os melhores exercícios para cada grupo muscular!</h4>
-        <Button variant="contained" color="error" href="#exercises">
-          Conheça os exercícios
-        </Button>
+        <div className={style.blur}></div>
+        <h1>
+          Descubra <br />
+          o Poder <br />
+          Do Exercício
+        </h1>
+
+        <h4>
+          Confira os melhores exercícios <br />
+          para cada grupo muscular
+        </h4>
+
+        <div className={style.span}>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <span className={style.spanTitle}>
+              9000 <span className={style.signal}>+</span>
+            </span>
+            <span className={style.desc}>Alunos</span>
+          </div>
+
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "start",
+            }}
+          >
+            <span className={style.spanTitle}>
+              1300 <span className={style.signal}>+</span>
+            </span>
+
+            <span className={style.desc}>Exercícios</span>
+          </div>
+
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <span className={style.spanTitle}>
+              98% <span className={style.signal}>+</span>
+            </span>
+
+            <span className={style.desc}>Avaliações Positivas</span>
+          </div>
+        </div>
       </div>
       <div>
         <img src={HeroImg} alt="err" />
-
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            setExFilter(teste);
-          }}
-        >
-          <label>Filtro</label>
-          <input
-            onChange={(e) => {
-              setTeste(e.target.value);
-            }}
-            value={teste}
-          />
-
-          <button
-            onClick={() => {
-              const result = exercises.filter((item) =>
-                item.bodyPart.includes(exFilter)
-              );
-              setFiltro(result);
-              console.log(result);
-            }}
-          >
-            buscar
-          </button>
-          {filtro.map((item) => {
-            return (
-              <img src={item.gifUrl} alt="eee" style={{ width: "10px" }} />
-            );
-          })}
-        </form>
       </div>
     </div>
   );

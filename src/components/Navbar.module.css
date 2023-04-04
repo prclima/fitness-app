@@ -1,4 +1,21 @@
 .navbar {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  background-color: #131110;
+  color: white;
+  align-items: center;
+  /* width: 1000px; */
+  padding: 20px;
+}
+
+.navbar img {
+  height: 100px;
+}
+
+.link {
+  background-color: #131110;
+}
+
+.link a:hover {
+  border-bottom: 3px solid #ffcd9e;
 }
