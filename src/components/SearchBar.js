@@ -1,6 +1,8 @@
 import svg from "../assets/svg_gym.svg";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Exercises from "./Exercises";
+import style from "./SearchBar.module.css";
 
 function SearchBar() {
   const [exercises, setExercises] = useState([]);
@@ -8,10 +10,10 @@ function SearchBar() {
   const [filtro, setFiltro] = useState([]);
   const [teste, setTeste] = useState();
 
-  let filtered;
+  const [bodypart, setBodyPart] = useState([]);
 
   useEffect(() => {
-    async function Fetch() {
+    async function FetchEx() {
       try {
         const response = await axios.get(
           "http://localhost:1337/api/exercises/4"
@@ -23,47 +25,49 @@ function SearchBar() {
         console.log("acabou fetch");
       }
     }
-    Fetch();
+    FetchEx();
   }, []);
+
+  useEffect(() => {
+    async function FetchBodyPart() {
+      try {
+        const response = await axios.get("http://localhost:1337/api/bodyparts");
+        setBodyPart(response.data);
+      } catch (err) {
+        console.log(err);
+      } finally {
+        console.log("acabou bodypart");
+      }
+    }
+    FetchBodyPart();
+  }, []);
+
   return (
-    <div>
-      <img src={svg} />
-      <h1>Procure pela parte do corpo</h1>
+    <>
+      <div className={style.bodyPartWrapper}>
+        <h1>Escolha seu músculo alvo</h1>
 
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          setExFilter(teste);
-          console.log(exFilter);
-        }}
-      >
-        <input
-          onChange={(e) => {
-            setTeste(e.target.value);
-          }}
-          value={teste}
-        />
-
-        {/* {filtro.map((item) => {
+        <div className={style.bodyPart_div}>
+          {bodypart.data?.map((part) => {
             return (
-              <img src={item.gifUrl} alt="eee" style={{ width: "10px" }} />
+              <button
+                onClick={() => {
+                  const result = exercises.filter((item) =>
+                    item.bodyPart.includes(part.attributes.part_name)
+                  );
+                  setFiltro(result);
+                  console.log(result);
+                }}
+              >
+                <img src={svg} />
+                <h4>{part.attributes.part_name}</h4>
+              </button>
             );
-          })} */}
-        <button
-          type="submition"
-          href="#exercises"
-          onClick={() => {
-            const result = exercises.filter((item) =>
-              item.bodyPart.includes(exFilter)
-            );
-            setFiltro(result);
-            console.log(result);
-          }}
-        >
-          Conheça os exercícios
-        </button>
-      </form>
-    </div>
+          })}
+        </div>
+      </div>
+      <Exercises filtro={filtro} />
+    </>
   );
 }
 

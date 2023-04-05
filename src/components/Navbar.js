@@ -4,7 +4,7 @@ import logo from "../assets/logo2-r.png";
 
 function Navbar() {
   return (
-    <>
+    <div className={style.wrapperNavbar}>
       <div className={style.navbar}>
         <Link to="/">
           <img src={logo} alt="logo" />
@@ -29,7 +29,7 @@ function Navbar() {
           </a>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

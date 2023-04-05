@@ -1,0 +1,45 @@
+.wrapper {
+  background-color: rgb(243, 242, 241);
+}
+
+.ex {
+  display: flex;
+  max-width: 1400px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.card {
+  max-width: 1400px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  border-radius: 10px;
+  align-items: center;
+  padding: 10px;
+  background-color: white;
+  margin: 15px;
+}
+
+.card:hover {
+  background-color: rgb(221, 221, 221);
+}
+
+.card p {
+  font-size: small;
+  justify-content: start;
+}
+
+.card span {
+  background-color: rgb(255, 166, 12);
+  border-radius: 5px;
+  color: white;
+  padding: 3px;
+  margin: 2px;
+}
+
+.card img {
+  margin: 5px;
+  border-radius: 5px;
+}

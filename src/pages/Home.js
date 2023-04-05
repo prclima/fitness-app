@@ -7,7 +7,6 @@ function Home() {
     <div>
       <HeroBanner />
       <SearchBar />
-      <Exercises />
     </div>
   );
 }

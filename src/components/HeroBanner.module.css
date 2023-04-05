@@ -1,7 +1,12 @@
 .heroWrapper {
+  background-color: #0c0d0f;
+}
+
+.hero {
   display: grid;
   grid-template-columns: 1fr 0.5fr;
-  background-color: #131110;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .title {
@@ -29,7 +34,7 @@
   left: -100px;
 }
 
-.heroWrapper button {
+.hero button {
   background-color: #ffb978;
   border: none;
   padding: 5px;
@@ -39,7 +44,7 @@
   font-weight: 600;
   width: 300px;
 }
-.heroWrapper button:hover {
+.hero button:hover {
   color: white;
   background-color: #ff8616;
 }
@@ -66,7 +71,7 @@
   color: #8c8b8b;
 }
 
-.heroWrapper img {
+.hero img {
   width: 400px;
   max-height: 500px;
 
